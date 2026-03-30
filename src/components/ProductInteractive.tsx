@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const STOREFRONT_TOKEN = process.env.NEXT_PUBLIC_STOREFRONT_TOKEN;
+const STOREFRONT_TOKEN = process.env.STOREFRONT_TOKEN;
 const VARIANT_ID = process.env.NEXT_PUBLIC_VARIANT_ID;
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_STORE_DOMAIN;
 
