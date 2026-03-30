@@ -16,7 +16,7 @@ export default function ProductFooter() {
               Join our private list for early access to new formulas, clinical
               research, and exclusive pricing.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-col lg:flex-row gap-2">
               <input
                 type="email"
                 placeholder="Email address"

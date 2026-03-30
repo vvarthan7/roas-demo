@@ -24,10 +24,10 @@ export default function ProductHeader() {
           Account
         </span>
         <button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition-colors">
-          Cart{" "}
-          <span className="bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
+          Cart
+          {/* <span className="bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
             3
-          </span>
+          </span> */}
         </button>
       </div>
     </nav>
