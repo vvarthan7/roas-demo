@@ -13,7 +13,11 @@ import { Analytics } from "@vercel/analytics/next";
 
 export default function HeadlessDemo() {
   if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("trackCustom", "ProductPage");
+    window.fbq("track", "ViewContent", {
+      content_name: "Daily Radiant Complex",
+      value: 900,
+      currency: "INR",
+    });
   }
   return (
     <div className="min-h-screen bg-white text-black font-sans pb-24 md:pb-0 selection:bg-black selection:text-white">
