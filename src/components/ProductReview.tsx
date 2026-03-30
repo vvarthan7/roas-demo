@@ -44,7 +44,7 @@ export default function ProductReview({ reviews }: ProductReviewProps) {
                 {"★".repeat(review.rating)}
               </div>
               <p className="text-gray-700 leading-relaxed font-medium mb-8">
-                {`"review.text"`}
+                {review.text}
               </p>
             </div>
             <div className="flex items-center gap-4 border-t border-gray-200 pt-6">
