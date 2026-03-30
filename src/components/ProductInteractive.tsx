@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 
 const STOREFRONT_TOKEN = process.env.STOREFRONT_TOKEN;
 const VARIANT_ID = process.env.NEXT_PUBLIC_VARIANT_ID;
@@ -171,7 +172,12 @@ export default function ProductInteractive() {
             </button>
           </div>
           <button
-            onClick={handleAddToCart}
+            onClick={() => {
+              handleAddToCart();
+              track("add_to_cart_clicked", {
+                product: "Daily Radiant Complex",
+              });
+            }}
             className="flex-1 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-900 transition-all shadow-xl active:scale-[0.98] flex justify-center items-center"
           >
             {isAdding
