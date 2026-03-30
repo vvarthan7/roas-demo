@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { track } from "@vercel/analytics";
 
 const STOREFRONT_TOKEN = process.env.STOREFRONT_TOKEN;
 const VARIANT_ID = process.env.NEXT_PUBLIC_VARIANT_ID;
@@ -23,6 +22,14 @@ export default function ProductInteractive() {
   }, []);
 
   const price = purchaseType === "subscribe" ? 45 : 55;
+
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "ViewContent", {
+      content_name: "Daily Radiant Complex",
+      value: price,
+      currency: "USD",
+    });
+  }
 
   const handleAddToCart = async () => {
     setIsAdding(true);
@@ -49,7 +56,7 @@ export default function ProductInteractive() {
 
     try {
       const response = await fetch(
-        `https://${STORE_DOMAIN}/api/2024-01/graphql.json`,
+        `https://${STORE_DOMAIN}/api/2026-01/graphql.json`,
         {
           method: "POST",
           headers: {
@@ -73,10 +80,7 @@ export default function ProductInteractive() {
       }
 
       const checkoutUrl = data?.cartCreate?.cart?.checkoutUrl;
-      if (checkoutUrl) {
-        setIsAdding(false);
-        window.location.href = checkoutUrl;
-      }
+      if (checkoutUrl) window.location.href = checkoutUrl;
     } catch (error) {
       setIsAdding(false);
       console.log("Failed to connect to Shopify.", error);
@@ -191,12 +195,7 @@ export default function ProductInteractive() {
             </button>
           </div>
           <button
-            onClick={() => {
-              handleAddToCart();
-              track("add_to_cart_clicked", {
-                product: "Daily Radiant Complex",
-              });
-            }}
+            onClick={handleAddToCart}
             className="flex-1 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-900 transition-all shadow-xl active:scale-[0.98] flex justify-center items-center"
           >
             {isAdding
