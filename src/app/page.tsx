@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
   return (
     <>
       <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black flex flex-col">
+        <SpeedInsights />
         <nav className="w-full flex justify-between items-center px-6 py-8 md:px-12 max-w-7xl mx-auto border-b border-white/10">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
