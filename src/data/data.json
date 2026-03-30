@@ -1,9 +1,9 @@
 {
   "productImages": [
-    "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=1200&auto=format&fit=crop"
+    "/assets/product-1.webp",
+    "/assets/product-2.webp",
+    "/assets/product-3.webp",
+    "/assets/product-4.webp"
   ],
   "lifestyleImages": [
     "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800&auto=format&fit=crop",

@@ -12,6 +12,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
 export default function HeadlessDemo() {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("trackCustom", "ProductPage");
+  }
   return (
     <div className="min-h-screen bg-white text-black font-sans pb-24 md:pb-0 selection:bg-black selection:text-white">
       <SpeedInsights />

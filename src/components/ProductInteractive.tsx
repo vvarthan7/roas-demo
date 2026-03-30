@@ -26,6 +26,14 @@ export default function ProductInteractive() {
 
   const handleAddToCart = async () => {
     setIsAdding(true);
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "AddToCart", {
+        value: price * quantity,
+        currency: "USD",
+        content_ids: [VARIANT_ID],
+        content_type: "product",
+      });
+    }
     const query = `
       mutation cartCreate($input: CartInput!) {
         cartCreate(input: $input) {
