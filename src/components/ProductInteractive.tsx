@@ -65,7 +65,10 @@ export default function ProductInteractive() {
       }
 
       const checkoutUrl = data?.cartCreate?.cart?.checkoutUrl;
-      if (checkoutUrl) window.location.href = checkoutUrl;
+      if (checkoutUrl) {
+        setIsAdding(false);
+        window.location.href = checkoutUrl;
+      }
     } catch (error) {
       setIsAdding(false);
       console.log("Failed to connect to Shopify.", error);
