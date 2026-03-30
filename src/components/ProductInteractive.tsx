@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { track } from "@vercel/analytics";
 
 const STOREFRONT_TOKEN = process.env.STOREFRONT_TOKEN;
@@ -13,6 +13,14 @@ export default function ProductInteractive() {
   );
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) setIsAdding(false);
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
 
   const price = purchaseType === "subscribe" ? 45 : 55;
 
@@ -57,10 +65,7 @@ export default function ProductInteractive() {
       }
 
       const checkoutUrl = data?.cartCreate?.cart?.checkoutUrl;
-      if (checkoutUrl) {
-        setIsAdding(false);
-        window.location.href = checkoutUrl;
-      }
+      if (checkoutUrl) window.location.href = checkoutUrl;
     } catch (error) {
       setIsAdding(false);
       console.log("Failed to connect to Shopify.", error);
