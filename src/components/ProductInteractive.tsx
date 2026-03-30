@@ -80,7 +80,17 @@ export default function ProductInteractive() {
       }
 
       const checkoutUrl = data?.cartCreate?.cart?.checkoutUrl;
-      if (checkoutUrl) window.location.href = checkoutUrl;
+      if (checkoutUrl) {
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq("track", "InitiateCheckout", {
+            content_ids: [VARIANT_ID],
+            content_type: "product",
+            value: price * quantity,
+            currency: "USD",
+          });
+        }
+        window.location.href = checkoutUrl;
+      }
     } catch (error) {
       setIsAdding(false);
       console.log("Failed to connect to Shopify.", error);
