@@ -1,0 +1,44 @@
+{
+  "productImages": [
+    "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=1200&auto=format&fit=crop"
+  ],
+  "lifestyleImages": [
+    "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1629380108599-ea06489d66f5?q=80&w=800&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "name": "Sarah J.",
+      "verified": true,
+      "text": "I've tried every premium supplement on the market. This is the only one where I saw a visible change in my skin's texture within 14 days. Absolutely incredible.",
+      "rating": 5,
+      "img": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
+    },
+    {
+      "name": "Michelle T.",
+      "verified": true,
+      "text": "The liposomal delivery actually makes a difference. No stomach upset, and my energy levels are completely stabilized. I'm on my 4th bottle.",
+      "rating": 5,
+      "img": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
+    },
+    {
+      "name": "Elena R.",
+      "verified": true,
+      "text": "Worth every penny. The subscription saves me the hassle, and the glass packaging feels incredibly high-end on my vanity.",
+      "rating": 5,
+      "img": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=150&auto=format&fit=crop"
+    },
+    {
+      "name": "Jessica W.",
+      "verified": true,
+      "text": "Replaced 4 different pills I was taking. Streamlined my morning routine and I feel better than I did in my 20s.",
+      "rating": 5,
+      "img": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop"
+    }
+  ]
+}
