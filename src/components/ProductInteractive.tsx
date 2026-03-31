@@ -14,7 +14,6 @@ export default function ProductInteractive() {
   );
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
-
   const pathname = usePathname();
   const searchParams = useSearchParams();
   useEffect(() => {
