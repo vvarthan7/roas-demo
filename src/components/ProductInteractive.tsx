@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { trackLinkClick, pageview } from "@/lib/gtag";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const STOREFRONT_TOKEN = process.env.STOREFRONT_TOKEN;
 const VARIANT_ID = process.env.NEXT_PUBLIC_VARIANT_ID;
@@ -12,6 +14,12 @@ export default function ProductInteractive() {
   );
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    pageview(pathname + searchParams.toString());
+  }, [pathname, searchParams]);
 
   useEffect(() => {
     const handlePageShow = (e: PageTransitionEvent) => {
@@ -40,6 +48,12 @@ export default function ProductInteractive() {
         content_ids: [VARIANT_ID],
         content_type: "product",
       });
+    }
+    if (typeof window.gtag === "function") {
+      trackLinkClick(
+        pathname + searchParams.toString(),
+        `Add to Cart — $${price * quantity}`,
+      );
     }
     const query = `
       mutation cartCreate($input: CartInput!) {
@@ -88,6 +102,9 @@ export default function ProductInteractive() {
             value: price * quantity,
             currency: "USD",
           });
+        }
+        if (typeof window.gtag === "function") {
+          trackLinkClick(checkoutUrl, `Add to Cart — $${price * quantity}`);
         }
         window.location.href = checkoutUrl;
       }
