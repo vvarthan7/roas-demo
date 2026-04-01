@@ -128,7 +128,6 @@ export default function ProductInteractive() {
         )}
       </div>
 
-      {/* Complex Purchase Type Toggle */}
       <div className="space-y-4 mb-8">
         <label
           className={`flex flex-col p-5 border-2 rounded-2xl cursor-pointer transition-all ${purchaseType === "subscribe" ? "border-black bg-gray-50" : "border-gray-200 hover:border-gray-300"}`}
@@ -188,7 +187,6 @@ export default function ProductInteractive() {
         </label>
       </div>
 
-      {/* Quantity & Add to Cart */}
       <div className="flex gap-4 mb-8">
         <div className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 w-32">
           <button
@@ -214,7 +212,6 @@ export default function ProductInteractive() {
         </button>
       </div>
 
-      {/* Accordions */}
       <div className="border-t border-gray-200 divide-y divide-gray-200 text-sm font-medium">
         <details
           className="group py-5 cursor-pointer"
