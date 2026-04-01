@@ -230,7 +230,10 @@ export default function ProductInteractive() {
             </span>
           </summary>
           <div className="pt-4 text-gray-500 leading-relaxed">
-            Formulated with 500mg of highly bioavailable Phytoceramides...
+            Formulated with 500mg of highly bioavailable Phytoceramides and
+            200mg of Hyaluronic Acid. In a 12-week double-blind study, 89% of
+            participants noted significant improvement in skin elasticity and
+            moisture retention.
           </div>
         </details>
       </div>
