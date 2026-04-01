@@ -91,8 +91,14 @@ export default function ProductInteractive() {
         return;
       }
 
-      const checkoutUrl = data?.cartCreate?.cart?.checkoutUrl;
-      if (checkoutUrl) {
+      const shopifyCheckoutUrl = data?.cartCreate?.cart?.checkoutUrl;
+      if (shopifyCheckoutUrl) {
+        const checkoutUrlObj = new URL(shopifyCheckoutUrl);
+        const currentUrlParams = new URLSearchParams(window.location.search);
+        currentUrlParams.forEach((value, key) => {
+          checkoutUrlObj.searchParams.append(key, value);
+        });
+
         if (typeof window !== "undefined" && window.fbq) {
           window.fbq("track", "InitiateCheckout", {
             content_ids: [VARIANT_ID],
@@ -102,9 +108,12 @@ export default function ProductInteractive() {
           });
         }
         if (typeof window.gtag === "function") {
-          trackLinkClick(checkoutUrl, `Add to Cart — $${price * quantity}`);
+          trackLinkClick(
+            checkoutUrlObj.toString(),
+            `Add to Cart — $${price * quantity}`,
+          );
         }
-        window.location.href = checkoutUrl;
+        window.location.href = checkoutUrlObj.toString();
       }
     } catch (error) {
       setIsAdding(false);
