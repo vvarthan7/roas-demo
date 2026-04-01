@@ -22,12 +22,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
-        <GoogleAnalytics
-          gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""}
-        />
+        <GoogleAnalytics gaId={process.env.GA_MEASUREMENT_ID || ""} />
         <Script
           id="meta-pixel"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
       !function(f,b,e,v,n,t,s)
@@ -39,7 +37,7 @@ export default function RootLayout({
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
 
-      fbq('init', '958483969889295');
+      fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
       fbq('track', 'PageView');
     `,
           }}

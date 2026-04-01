@@ -15,11 +15,12 @@ export default function ProductGallery({ productImages }: ProductGalleryProps) {
       <div className="relative aspect-square md:aspect-4/5 bg-gray-50 rounded-3xl overflow-hidden cursor-zoom-in group">
         <Image
           src={productImages[mainImg]}
-          width="1200"
-          height="1200"
+          width="800"
+          height="800"
           alt="Main Product"
           className="w-full h-full object-cover mix-blend-multiply transition-transform duration-700 group-hover:scale-110"
           loading="eager"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
         {/* Overlay Badges */}
         <div className="absolute top-6 left-6 flex flex-col gap-2">
@@ -63,8 +64,8 @@ export default function ProductGallery({ productImages }: ProductGalleryProps) {
           >
             <Image
               src={img}
-              width="1200"
-              height="1200"
+              width="800"
+              height="800"
               alt={`Thumb ${idx}`}
               className="w-full h-full object-cover"
               loading="lazy"

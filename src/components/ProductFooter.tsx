@@ -20,6 +20,7 @@ export default function ProductFooter() {
               <input
                 type="email"
                 placeholder="Email address"
+                defaultValue=""
                 className="bg-white/10 border border-white/20 text-white px-4 py-3 rounded-xl flex-1 focus:outline-none focus:border-white transition-colors"
               />
               <button className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-gray-200 transition-colors">

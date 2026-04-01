@@ -1,5 +1,3 @@
-"use client";
-
 import ProductReview from "@/components/ProductReview";
 import ProductGallery from "@/components/ProductGallery";
 import ProductInteractive from "@/components/ProductInteractive";
@@ -7,6 +5,7 @@ import ProductHeader from "@/components/ProductHeader";
 import ProductFooter from "@/components/ProductFooter";
 import ProductBanner from "@/components/ProductBanner";
 import ProductList from "@/components/ProductList";
+import ProducDetail from "@/components/ProductDetail";
 import { productImages, lifestyleImages, reviews } from "@/data/data.json";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -21,13 +20,16 @@ export default function HeadlessDemo() {
       <ProductHeader />
       <main className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 py-8 md:py-16 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-start">
         <ProductGallery productImages={productImages} />
-        <Suspense
-          fallback={
-            <div className="animate-pulse bg-gray-100 rounded-2xl h-96" />
-          }
-        >
-          <ProductInteractive />
-        </Suspense>
+        <div className="flex flex-col pt-4">
+          <ProducDetail />
+          <Suspense
+            fallback={
+              <div className="animate-pulse bg-gray-100 rounded-2xl h-96" />
+            }
+          >
+            <ProductInteractive />
+          </Suspense>
+        </div>
       </main>
       <ProductList lifestyleImages={lifestyleImages} />
       <ProductReview reviews={reviews} />
