@@ -50,7 +50,7 @@ export default function Home() {
           {/* The Call to Actions */}
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <Link
-              href="/headless-demo"
+              href="https://offers.vvstudiolabs.com"
               className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all flex items-center justify-center min-w-[200px]"
             >
               See the {"<"}400ms Demo
