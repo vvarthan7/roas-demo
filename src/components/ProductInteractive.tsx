@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { trackLinkClick, pageview } from "@/lib/gtag";
 import { usePathname, useSearchParams } from "next/navigation";
-import ProductBenefits from "./ProductBenefits";
 
 const STOREFRONT_TOKEN = process.env.STOREFRONT_TOKEN;
 const VARIANT_ID = process.env.NEXT_PUBLIC_VARIANT_ID;
@@ -91,8 +90,14 @@ export default function ProductInteractive() {
         return;
       }
 
-      const checkoutUrl = data?.cartCreate?.cart?.checkoutUrl;
-      if (checkoutUrl) {
+      const shopifyCheckoutUrl = data?.cartCreate?.cart?.checkoutUrl;
+      if (shopifyCheckoutUrl) {
+        const checkoutUrlObj = new URL(shopifyCheckoutUrl);
+        const currentUrlParams = new URLSearchParams(window.location.search);
+        currentUrlParams.forEach((value, key) => {
+          checkoutUrlObj.searchParams.append(key, value);
+        });
+
         if (typeof window !== "undefined" && window.fbq) {
           window.fbq("track", "InitiateCheckout", {
             content_ids: [VARIANT_ID],
@@ -102,9 +107,12 @@ export default function ProductInteractive() {
           });
         }
         if (typeof window.gtag === "function") {
-          trackLinkClick(checkoutUrl, `Add to Cart — $${price * quantity}`);
+          trackLinkClick(
+            checkoutUrlObj.toString(),
+            `Add to Cart — $${price * quantity}`,
+          );
         }
-        window.location.href = checkoutUrl;
+        window.location.href = checkoutUrlObj.toString();
       }
     } catch (error) {
       setIsAdding(false);
@@ -126,7 +134,7 @@ export default function ProductInteractive() {
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
             className="text-2xl font-light text-gray-500 hover:text-black cursor-pointer"
           >
-            −
+            -
           </button>
           <span className="font-bold text-lg">{quantity}</span>
           <button
@@ -143,17 +151,6 @@ export default function ProductInteractive() {
         >
           {isAdding ? "Processing..." : `Add to Cart — $${price * quantity}`}
         </button>
-      </div>
-
-      <div className="border-t border-gray-200 divide-y divide-gray-200 text-sm font-medium">
-        <ProductBenefits
-          title="Clinical Benefits"
-          description="Formulated with 500mg of highly bioavailable Phytoceramides and 200mg of Hyaluronic Acid. In a 12-week double-blind study, 89% of participants noted significant improvement in skin elasticity and moisture retention."
-        />
-        <ProductBenefits
-          title="Full Ingredient List"
-          description="Vitamin C (as Ascorbic Acid), Zinc (as Zinc Picolinate), Liposomal Ceramide Complex, Organic Ashwagandha Root Extract, Bamboo Silica. *Contains absolutely no proprietary blends.*"
-        />
       </div>
 
       {/* Mobile Sticky CTA (Rendered here because it needs the exact same state) */}
