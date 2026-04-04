@@ -3,7 +3,6 @@ import ProductGallery from "@/components/ProductGallery";
 import ProductInteractive from "@/components/ProductInteractive";
 import ProductHeader from "@/components/ProductHeader";
 import ProductFooter from "@/components/ProductFooter";
-import ProductBanner from "@/components/ProductBanner";
 import ProductList from "@/components/ProductList";
 import ProducDetail from "@/components/ProductDetail";
 import ProductBenefits from "@/components/ProductBenefits";

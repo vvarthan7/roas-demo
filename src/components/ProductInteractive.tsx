@@ -149,12 +149,27 @@ export default function ProductInteractive() {
           disabled={isDisabled}
           className="flex-1 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-900 transition-all shadow-xl active:scale-[0.98] flex justify-center items-center cursor-pointer"
         >
-          {isAdding ? "Processing..." : `Add to Cart — $${price * quantity}`}
+          {isAdding ? "Processing..." : `Buy now — $${price * quantity}`}
         </button>
       </div>
 
       {/* Mobile Sticky CTA (Rendered here because it needs the exact same state) */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-xl border-t border-gray-200 p-4 pb-8 z-50 flex gap-4 items-center shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+        <div className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-xl px-2 py-2 w-20">
+          <button
+            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+            className="text-2xl font-light text-gray-500 hover:text-black cursor-pointer"
+          >
+            -
+          </button>
+          <span className="font-bold text-md">{quantity}</span>
+          <button
+            onClick={() => setQuantity(quantity + 1)}
+            className="text-2xl font-light text-gray-500 hover:text-black cursor-pointer"
+          >
+            +
+          </button>
+        </div>
         <div className="flex-1 flex flex-col">
           <span className="text-xl font-black">${price * quantity}</span>
         </div>
@@ -163,7 +178,7 @@ export default function ProductInteractive() {
           disabled={isDisabled}
           className="flex-2 bg-black text-white py-4 px-6 rounded-xl font-bold hover:bg-gray-900 active:scale-95 transition-all text-lg"
         >
-          {isAdding ? "Processing..." : "Add to Cart"}
+          {isAdding ? "Processing..." : "Buy now"}
         </button>
       </div>
     </>
